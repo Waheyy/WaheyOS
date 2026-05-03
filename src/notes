@@ -1,0 +1,11 @@
+https://pip.raspberrypi.com/documents/RP-008248-DS
+
+read memory map
+
+from 1.2.4
+The peripheral addresses specified in this document are legacy master addresses
+and are visible to the ARM at 0x0_FEnn_nnnn if Low Peripheral mode is enabled.
+
+
+
+
