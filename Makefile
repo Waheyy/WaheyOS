@@ -39,4 +39,3 @@ kernel8.img : $(OBJ_DIR)/linker.ld $(OBJ_FILES)
 	$(ARM)-ld -T $(OBJ_DIR)/linker.ld -o $(BIN_DIR)/kernel8.elf $(OBJ_FILES)
 	$(ARM)-objcopy $(BIN_DIR)/kernel8.elf -O binary $(BIN_DIR)/kernel8.img
 
-

@@ -1,7 +1,6 @@
 #include "gpio.h"
 #include "mmio.h"
 #include <stdint.h>
-#include <sys/types.h>
 
 enum {                        // for uart0 only
   DR = 0xfe000000 + 0x201000, // data reg
@@ -114,5 +113,33 @@ void writeText(char *buffer) {
       writeBytetoBuf('\r');
     }
     writeBytetoBuf(*buffer++);
+  }
+}
+
+void drainOutputQueue() {
+  while (!isOutputQueueEmpty()) {
+    loadOutputFIFO();
+  }
+}
+
+void uart_update() {
+  loadOutputFIFO();
+
+  if (!isRXempty()) {
+    uint8_t ch = readByte();
+    if (ch == '\r') {
+      writeBytetoBuf('\n');
+    } else {
+      writeBytetoBuf(ch);
+    }
+  }
+}
+
+void uart_testInput() {
+  loadOutputFIFO();
+  if (!isRXempty()) {
+    writeText("hit thing");
+    // uint8_t ch = readByte();
+    // writeByte(ch);
   }
 }
