@@ -6,11 +6,8 @@ _start:
   mrs x1, mpidr_el1
   and x1, x1, #3
   cbz x1, maincore
-  b proc_hang
-
-proc_hang:
-  b proc_hang
-
+1: wfe
+  b 1b
 
 maincore:
   ldr x1, =_start

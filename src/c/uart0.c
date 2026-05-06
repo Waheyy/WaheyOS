@@ -139,7 +139,7 @@ void uart_testInput() {
   loadOutputFIFO();
   if (!isRXempty()) {
     writeText("hit thing");
-    // uint8_t ch = readByte();
-    // writeByte(ch);
+    uint8_t ch = readByte();
+    writeByte(ch);
   }
 }
