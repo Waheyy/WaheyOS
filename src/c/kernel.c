@@ -1,9 +1,6 @@
 #include "framebuffer.h"
+#include "interrupts.h"
 #include "uart0.h"
-unsigned int colpal[] = {0x000000, 0x0000AA, 0x00AA00, 0x00AAAA,
-                         0xAA0000, 0xAA00AA, 0xAA5500, 0xAAAAAA,
-                         0x555555, 0x5555FF, 0x55FF55, 0x55FFFF,
-                         0xFF5555, 0xFF55FF, 0xFFFF55, 0xFFFFFF};
 
 void delay(volatile int count) {
   while (count--) {
@@ -14,6 +11,8 @@ void delay(volatile int count) {
 void kernel_entry() {
   uart0_init();
   framebuffer_init();
+  interrupt_init();
+  enable_irq();
 
   while (1) {
     draw_rect(0, 0, 1920, 1080, 0, 1);
