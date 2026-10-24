@@ -1,7 +1,7 @@
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
+#include <stddef.h>
 #include <stdint.h>
-
 typedef struct Coords {
   size_t x;
   size_t y;

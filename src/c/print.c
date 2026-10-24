@@ -1,6 +1,7 @@
 #include "print.h"
 #include "framebuffer.h"
 #include "waheylib.h"
+#include <stdarg.h>
 #include <stdint.h>
 
 #define MAXBUF 0x100
@@ -37,10 +38,11 @@ int push_to_buf(Stream *stream, char c) {
 }
 
 int push_all_to_buf(Stream *stream, char *str) {
+  int err;
   while (*str) {
     if (*str == '\0')
       break;
-    int err = push_to_stream(stream, *str);
+    err = push_to_buf(stream, *str);
   }
   if (err) {
     return err;

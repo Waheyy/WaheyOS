@@ -15,19 +15,19 @@ void kernel_entry() {
   interrupt_init();
   enable_irq();
 
-  // while (1) {
-  //   draw_rect(0, 0, 1920, 1080, 0, 1);
-  //   for (int i = 1; i < 0x10; i++) {
-  //     draw_string(460, 520, "WAHEYY OPERATING SYSTEM!!", (0 << 4 | i), 5);
-  //     delay(3000000);
-  //   }
-  // }
-
   while (1) {
-    printf("WAHEY OPERATING SYSTEM %d\n", 15);
-    printf("WAHEY OPERATING SYSTEM %d\n", 16);
-    printf("WAHEY OPERATING SYSTEM %d\n", 17);
-    printf("WAHEY OPERATING SYSTEM %d\n", 18);
-    printf("WAHEY OPERATING SYSTEM %d\n", 19);
+    draw_rect(0, 0, 1920, 1080, 0, 1);
+    for (int i = 1; i < 0x10; i++) {
+      draw_string(460, 520, "WAHEYY OPERATING SYSTEM!!", (0 << 4 | i), 5);
+      delay(3000000);
+    }
   }
+
+  // while (1) {
+  //   printf("WAHEY OPERATING SYSTEM %d\n", 15);
+  //   printf("WAHEY OPERATING SYSTEM %d\n", 16);
+  //   printf("WAHEY OPERATING SYSTEM %d\n", 17);
+  //   printf("WAHEY OPERATING SYSTEM %d\n", 18);
+  //   printf("WAHEY OPERATING SYSTEM %d\n", 19);
+  // }
 }

@@ -1,6 +1,7 @@
 #include "framebuffer.h"
 #include "terminal.h"
 #include "vcmbox.h"
+#include <stddef.h>
 #include <stdint.h>
 
 uint32_t width, height, pitch, isrgb;

@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdint.h>
 
 void *memset(void *dest_ptr, int x, size_t n) {
@@ -5,13 +6,13 @@ void *memset(void *dest_ptr, int x, size_t n) {
   while (n--) {
     *p++ = (unsigned char)x;
   }
-  return dest_ptr
+  return dest_ptr;
 }
 
 size_t strlen(const char *str) {
   size_t len = 0;
   while (*str++) {
-    len++
+    len++;
   }
   return len;
 }
