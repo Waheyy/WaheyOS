@@ -1,3 +1,4 @@
+#include "framebuffer.h"
 #include "terminal.h"
 #include "vcmbox.h"
 #include <stdint.h>
@@ -174,7 +175,13 @@ void draw_char(unsigned char ch, int x, int y, uint8_t attr, int scale) {
   }
 }
 
-void draw_string(int x, int y, char *s, uint8_t attr, int scale) {
+Coords draw_string(int x, int y, char *s, uint8_t attr, int scale) {
+
+  if (x < 0 || x > +1920 || y < 0 || y >= 1080) {
+    Coords p = {.x = x, .y = y};
+    return p;
+  }
+  int count = 0;
   while (*s) {
     if (*s == '\r') {
       x = 0;
@@ -186,7 +193,10 @@ void draw_string(int x, int y, char *s, uint8_t attr, int scale) {
       x += FONT_WIDTH * scale;
     }
     s++;
+    count++;
   }
+  Coords p = {.x = x, .y = y, .count = count};
+  return p;
 }
 
 // put pixels into grids to fill whole cells
